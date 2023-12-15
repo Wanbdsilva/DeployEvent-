@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import "./DetalhesEventoPage.css"
 import MainContent from '../../components/MainContent/MainContent';
 import Container from '../../components/Container/Container';
 import Title from '../../components/Title/Title';
@@ -7,9 +8,9 @@ import api, { eventsTypeResource } from '../../Services/Service';
 import { eventsResource } from '../../Services/Service';
 import { UserContext } from "../../context/AuthContext";
 import { useParams } from 'react-router-dom';
-import TableCE from './TableDEv/TableDEv';
+import TableDEv from './TableDEv/TableDEv';
 
-const DetalhesEventoPage = () => {
+const DetalhesEventosPage = () => {
 
     const {idEvento} = useParams();
     // recupera os dados globais do usuário
@@ -92,7 +93,7 @@ const DetalhesEventoPage = () => {
      </section>
             <section className="lista-eventos-section">
           <Container>
-            <TableCE
+            <TableDEv
               id = {idEvento}
             />
           </Container>
@@ -101,4 +102,4 @@ const DetalhesEventoPage = () => {
     );
 };
 
-export default DetalhesEventoPage;
+export default DetalhesEventosPage;

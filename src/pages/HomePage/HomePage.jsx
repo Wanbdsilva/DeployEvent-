@@ -15,51 +15,48 @@ import PastEvents from "../../components/PastEvents/PastEvents";
 
 
 const HomePage = () => {
-  const [PastEvents, setPastEvents] = useState([]);
+  const [pastEvents, setPastEvents] = useState([]);
   const [nextEvents, setNextEvents] = useState([]);
   const [notifyUser, setNotifyUser] = useState(); //Componente Notification
 
   // roda somente na inicialização do componente
   useEffect(() => {
-    async function getNextEvents() {
-      try {
-        const promise = await api.get(nextEventResource);
-        const dados = await promise.data;
-        // console.log(dados);
-        setNextEvents(dados); //atualiza o state
-
-      } catch (error) {
-        console.log("não trouxe os próximos eventos, verifique lá!");
-        // setNotifyUser({
-        //   titleNote: "Erro",
-        //   textNote: `Não foi possível carregar os próximos eventos. Verifique a sua conexão com a internet`,
-        //   imgIcon: "danger",
-        //   imgAlt:
-        //   "Imagem de ilustração de erro. Rapaz segurando um balão com símbolo x.",
-        //   showMessage: true,
-        // });
-      }
-    }
-
+    
     getNextEvents(); //chama a função
+    getPastEvents();
   }, []);
+  
+  
+  async function getNextEvents() {
+    try {
+      const promise = await api.get(nextEventResource);
+      const dados = await promise.data;
+      // console.log(dados);
+      setNextEvents(dados); //atualiza o state
 
-  useEffect(() => {
-    async function getPastEvents() {
-      try {
-        const promise = await api.get(getPastEvents);
-        const dados = promise.data;
-        // console.log(dados);
-        getPastEvents(dados); //atualiza o state
-
-      } catch (error) {
-        console.log("não trouxe os eventos anteriores, verifique lá!");
-      }
+    } catch (error) {
+      console.log("não trouxe os próximos eventos, verifique lá!");
+      // setNotifyUser({
+      //   titleNote: "Erro",
+      //   textNote: `Não foi possível carregar os próximos eventos. Verifique a sua conexão com a internet`,
+      //   imgIcon: "danger",
+      //   imgAlt:
+      //   "Imagem de ilustração de erro. Rapaz segurando um balão com símbolo x.",
+      //   showMessage: true,
+      // });
     }
+  }
+  
+  async function getPastEvents() {
+    try {
+      const promise = await api.get(pastEventsResource);
+      setPastEvents(promise.data)
+  
 
-    getPastEvents(); //chama a função
-  }, []);
-
+    } catch (error) {
+      console.log("não trouxe os eventos anteriores, verifique lá!");
+    }
+  }
   return (
     
     <MainContent>
@@ -87,26 +84,28 @@ const HomePage = () => {
         </Container>
       </section>
 
-      {/* EVENTOS PASSADOS
-      <section className="proximos-eventos">
+      <section className='proximos-eventos'>
         <Container>
-          <Title titleText={"Eventos anteriores"} />
+          <Title titleText={"Eventos Anteriores"}/>
 
-          <div className="events-box">
-            {nextEvents.map((e) => {
-              return (
-                <PastEvents
+          <div className='events-box'>
+            {
+              pastEvents.map((e) => {
+                return(
+                  <PastEvents
                   key={e.idEvento}
                   title={e.nomeEvento}
                   description={e.descricao}
                   eventDate={e.dataEvento}
                   idEvent={e.idEvento}
-                />
-              );
-            })}
+                  buttonText = {"Visualizar"}
+                  />
+                )
+              })
+            }     
           </div>
         </Container>
-      </section> */}
+      </section>
 
       <VisionSection />
       <ContactSection />

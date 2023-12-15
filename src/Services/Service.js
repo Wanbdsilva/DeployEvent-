@@ -17,7 +17,7 @@ export const eventsResource = '/Evento';
 /**
  * Rota para o recurso Listar Minhas Presenças
  */
-export const myEventsResource = '/PresencasEvento/ListarMinhas';
+export const myEventsResource = '/Presencas/ListarMinhas';
 /**
  * Rota para o recurso Presenças Evento
  */

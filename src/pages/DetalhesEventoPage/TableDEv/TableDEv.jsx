@@ -1,4 +1,5 @@
 import React from "react";
+import './TableDEv.css'
 import MainContent from '../../../components/MainContent/MainContent';
 import Container from '../../../components/Container/Container';
 import Title from '../../../components/Title/Title';

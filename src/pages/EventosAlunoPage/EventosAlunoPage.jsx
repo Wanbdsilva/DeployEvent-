@@ -48,9 +48,8 @@ const EventosAlunoPage = () => {
       //todos os eventos (Evento)
       try {
         const todosEventos = await api.get(eventsResource);
-        const meusEventos = await api.get(
-          `${myEventsResource}/${userData.userId}`
-        );
+        const meusEventos = await api.get(`${myEventsResource}/${userData.userId}`);
+        console.log(meusEventos.data);
 
         const eventosMarcados = verificaPresenca(
           todosEventos.data,
