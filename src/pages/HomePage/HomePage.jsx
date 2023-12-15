@@ -87,7 +87,7 @@ const HomePage = () => {
         </Container>
       </section>
 
-      {/* EVENTOS PASSADOS */}
+      {/* EVENTOS PASSADOS
       <section className="proximos-eventos">
         <Container>
           <Title titleText={"Eventos anteriores"} />
@@ -106,7 +106,7 @@ const HomePage = () => {
             })}
           </div>
         </Container>
-      </section>
+      </section> */}
 
       <VisionSection />
       <ContactSection />
